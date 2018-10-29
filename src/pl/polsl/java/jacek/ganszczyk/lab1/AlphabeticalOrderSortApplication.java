@@ -1,10 +1,10 @@
 package pl.polsl.java.jacek.ganszczyk.lab1;
 
 import pl.polsl.java.jacek.ganszczyk.lab1.controller.Controller;
+import pl.polsl.java.jacek.ganszczyk.lab1.exceptions.NullListException;
 import pl.polsl.java.jacek.ganszczyk.lab1.view.View;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 /**
  * Entry Point of application.
@@ -14,28 +14,18 @@ import java.util.Scanner;
  */
 public class AlphabeticalOrderSortApplication {
     /**
- * Main method, read file path from program parameters
- *
- */
+     * Main method, read file path from program parameters
+     *
+     */
 
     /**
- * Main method, read file path from program parameters
- *
- * @param args the command line arguments
- */
+     * Main method, read file path from program parameters
+     *
+     * @param args the command line arguments
+     */
 
-public static void main(String[] args) throws IOException {
-    View view = new View();
-    Scanner input = new Scanner(System.in);
-    String fileName;
-    Controller controller = new Controller(view);
-    if (args.length == 0) {
-        view.showMessage("There is no fileName in parameters, type it end press enter (ex input.txt)");
-        fileName = input.nextLine();
-    } else {
-        fileName = args[0];
+    public static void main(String[] args) throws IOException, NullListException {
+        Controller controller = new Controller();
+        controller.mainControllerMethod(args);
     }
-
-    controller.sortStringsFromFile(fileName);
-}
 }

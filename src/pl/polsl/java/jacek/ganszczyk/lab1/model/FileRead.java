@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 
 /**
- * FileRead class reads data from files.
+ * FileRead reads from file given by user
  *
  * @author Jacek Ganszczyk
  * @version 1.0
@@ -18,16 +18,20 @@ public class FileRead {
      */
     private final String fileName;
 
+    /**
+     * Main class constructor
+     * @param fileName saves to this field filename
+     */
     public FileRead(String fileName) {
         this.fileName = fileName;
     }
 
 
     /**
-     * Read data from file
+     * Read words lien by line from given file
      *
-     * @return List with data
-     * @throws java.io.IOException when file can not be read
+     * @return List with strings
+     * @throws java.io.IOException when there is a problem with file.
      */
     public LinkedList<String> ReadStringsFromFile() throws IOException {
         BufferedReader readBuffer;
@@ -37,8 +41,8 @@ public class FileRead {
             readBuffer = new BufferedReader(new FileReader(fileName));
             do {
                 oneLine = readBuffer.readLine();
-                if(oneLine!=null)
-                stringsFromFile.add(oneLine);
+                if (null != oneLine && oneLine.trim().length() > 0)
+                    stringsFromFile.add(oneLine);
             }
             while (null != oneLine);
             readBuffer.close();
